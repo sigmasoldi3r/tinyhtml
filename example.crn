@@ -1,0 +1,16 @@
+;;;
+; This file illustrates how to use the html library.
+;;;
+(import [!DOCTYPE html head meta title body h1 div] :from "html")
+
+(println!
+  (!DOCTYPE :html)
+  (html {:lang "en"}
+    (head
+      (meta {:charset "UTF-8"})
+      (meta {:name "viewport" :content "width=device-width, initial-scale=1.0"})
+      (title "Really cool example"))
+    (body
+      (h1 "HTML Example")
+      (div {:style "color: red;"}
+        "Hello World!"))))
