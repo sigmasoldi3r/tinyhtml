@@ -29,6 +29,15 @@
       (element name first (list/join args "") don't-close)
       (element name {} (list/join (if (some? first) (list/prepend args first) args) "") don't-close))))
 
+;;;
+; This metafunction converts a Lua table to a Charon table using the builtin
+; charon runtime, to make it standalone and usabe from pure Lua.
+; This avoids the need of using dirty quirks and requiring the charon runtime.
+;;;
+(defn! props [object]
+  (declare charon)
+  (charon::table object))
+
 (defn !DOCTYPE [& a] (str "<!DOCTYPE " (list/join (list/map a as-plain) " ") ">"))
 (defn a [f & args] (tag "a" f args))
 (defn abbr [f & a] (tag "abbr" f a))
